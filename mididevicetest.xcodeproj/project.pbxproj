@@ -13,6 +13,7 @@
 		23DCD6581BF7EC36009A3BFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23DCD6561BF7EC36009A3BFA /* Main.storyboard */; };
 		23DCD65A1BF7EC36009A3BFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23DCD6591BF7EC36009A3BFA /* Assets.xcassets */; };
 		23DCD65D1BF7EC36009A3BFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23DCD65B1BF7EC36009A3BFA /* LaunchScreen.storyboard */; };
+		23DCD6651BF7EF53009A3BFA /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DCD6641BF7EF53009A3BFA /* CoreMIDI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		23DCD6591BF7EC36009A3BFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23DCD65C1BF7EC36009A3BFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23DCD65E1BF7EC36009A3BFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23DCD6641BF7EF53009A3BFA /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23DCD6651BF7EF53009A3BFA /* CoreMIDI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 		23DCD6411BF7EC36009A3BFA = {
 			isa = PBXGroup;
 			children = (
+				23DCD6641BF7EF53009A3BFA /* CoreMIDI.framework */,
 				23DCD64C1BF7EC36009A3BFA /* mididevicetest */,
 				23DCD64B1BF7EC36009A3BFA /* Products */,
 			);
@@ -110,6 +114,7 @@
 				TargetAttributes = {
 					23DCD6491BF7EC36009A3BFA = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 79Z3HGY4UQ;
 					};
 				};
 			};
@@ -263,10 +268,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = mididevicetest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.naojitaniguchi.mididevicetest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "eb89441d-580d-4990-b7ae-4440507f68a3";
 			};
 			name = Debug;
 		};
@@ -274,10 +282,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = mididevicetest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.naojitaniguchi.mididevicetest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "eb89441d-580d-4990-b7ae-4440507f68a3";
 			};
 			name = Release;
 		};
@@ -300,6 +311,7 @@
 				23DCD6631BF7EC36009A3BFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
