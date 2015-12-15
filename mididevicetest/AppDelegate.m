@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "BTMidiScanViewController.h"
+#import "BTMidiScanNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+  
+    /*
+    BTMidiScanViewController *btMidiScanViewController = [[BTMidiScanViewController alloc]init];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:btMidiScanViewController];
+     */
+    
+    
+    //self.window.rootViewController = [[BTMidiScanNavigationController alloc]init];
+    
     return YES;
 }
 

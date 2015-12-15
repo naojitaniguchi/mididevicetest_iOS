@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import <CoreMIDI/CoreMIDI.h>
+#import "CoreAudioKit/CABTMIDICentralViewController.h"
+#import "BTMidiScanNavigationController.h"
 
 
 NSString *getName(MIDIObjectRef object)
@@ -21,12 +23,6 @@ NSString *getName(MIDIObjectRef object)
 
 NSString *getPropatyString(MIDIObjectRef object, CFStringRef property )
 {
-    //kMIDIPropertyManufacturer
-    //kMIDIPropertyModel
-    //kMIDIPropertyUniqueID
-    //kMIDIPropertyDeviceID
-    // kMIDIPropertyDisplayName
-    
     // Returns the name of a given MIDIObjectRef as an NSString
     CFStringRef name = nil;
     if (noErr != MIDIObjectGetStringProperty(object, property, &name))
@@ -140,46 +136,81 @@ MIDIInputProc(const MIDIPacketList *pktlist,
 
 @end
 
+
+
+
+
 @implementation ViewController
+
+- (void)setupMidi{
+
+     getMidiDevices();
+     getMidiSources();
+     
+     OSStatus err;
+     MIDIClientRef clientRef;
+     MIDIPortRef inputPortRef;
+     
+     NSString *clientName = @"inputClient";
+     err = MIDIClientCreate((CFStringRef)CFBridgingRetain(clientName), NULL, NULL, &clientRef);
+     if (err != noErr) {
+         NSLog(@"MIDIClientCreate err = %d", err);
+         return ;
+     }
+     
+     NSString *inputPortName = @"inputPort";
+     err = MIDIInputPortCreate(
+     clientRef, (CFStringRef)CFBridgingRetain(inputPortName),
+     MIDIInputProc, NULL, &inputPortRef);
+     if (err != noErr) {
+         NSLog(@"MIDIInputPortCreate err = %d", err);
+         return ;
+     }
+     
+     ItemCount sourceCount = MIDIGetNumberOfSources();
+     
+     NSLog( @"errsourceCount = %lu", sourceCount );
+     for (ItemCount i = 0; i < sourceCount; i++) {
+         MIDIEndpointRef sourcePointRef = MIDIGetSource(i);
+         err = MIDIPortConnectSource(inputPortRef, sourcePointRef, NULL);
+         if (err != noErr) {
+             NSLog(@"MIDIPortConnectSource err = %d", err);
+             return ;
+         }
+     }
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
-    getMidiDevices();
-    getMidiSources();
-    
-    OSStatus err;
-    MIDIClientRef clientRef;
-    MIDIPortRef inputPortRef;
-    
-    NSString *clientName = @"inputClient";
-    err = MIDIClientCreate((CFStringRef)CFBridgingRetain(clientName), NULL, NULL, &clientRef);
-    if (err != noErr) {
-        NSLog(@"MIDIClientCreate err = %d", err);
-        return ;
-    }
-    
-    NSString *inputPortName = @"inputPort";
-    err = MIDIInputPortCreate(
-                              clientRef, (CFStringRef)CFBridgingRetain(inputPortName),
-                              MIDIInputProc, NULL, &inputPortRef);
-    if (err != noErr) {
-        NSLog(@"MIDIInputPortCreate err = %d", err);
-        return ;
-    }
-    
-    ItemCount sourceCount = MIDIGetNumberOfSources();
-    
-    NSLog( @"errsourceCount = %lu", sourceCount );
-    for (ItemCount i = 0; i < sourceCount; i++) {
-        MIDIEndpointRef sourcePointRef = MIDIGetSource(i);
-        err = MIDIPortConnectSource(inputPortRef, sourcePointRef, NULL);
-        if (err != noErr) {
-            NSLog(@"MIDIPortConnectSource err = %d", err);
-            return ;
-        }
-    }
+    UIButton *connectButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    connectButton.frame = CGRectMake(100, 100, 100, 44);
+    [connectButton setTitle:@"Open Plugin" forState:UIControlStateNormal];
+    [connectButton addTarget:self action:@selector(openPlugin:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:connectButton];
+
+
+    UIButton *midiButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    midiButton.frame = CGRectMake(100, 300, 100, 44);
+    [midiButton setTitle:@"Midi Connect" forState:UIControlStateNormal];
+    [midiButton addTarget:self action:@selector(midiConnect:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:midiButton];
+}
+
+- (IBAction)openPlugin:(id)sender{
+    BTMidiScanNavigationController *controller = [[BTMidiScanNavigationController alloc] init];
+    [self presentViewController:controller animated:YES completion:nil];
+
+}
+
+- (IBAction)midiConnect:(id)sender{
+    NSLog(@"midiConnect called");
+    [self setupMidi];
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		231CA7E21C165F4300530EDA /* BTMidiScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231CA7E11C165F4300530EDA /* BTMidiScanViewController.m */; };
+		235DCB411C1A95FC003E3439 /* BTMidiScanNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB401C1A95FC003E3439 /* BTMidiScanNavigationController.m */; };
 		23DCD64F1BF7EC36009A3BFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DCD64E1BF7EC36009A3BFA /* main.m */; };
 		23DCD6521BF7EC36009A3BFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DCD6511BF7EC36009A3BFA /* AppDelegate.m */; };
 		23DCD6551BF7EC36009A3BFA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DCD6541BF7EC36009A3BFA /* ViewController.m */; };
@@ -17,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		231CA7E01C165F4300530EDA /* BTMidiScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTMidiScanViewController.h; sourceTree = "<group>"; };
+		231CA7E11C165F4300530EDA /* BTMidiScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTMidiScanViewController.m; sourceTree = "<group>"; };
+		235DCB3F1C1A95FC003E3439 /* BTMidiScanNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTMidiScanNavigationController.h; sourceTree = "<group>"; };
+		235DCB401C1A95FC003E3439 /* BTMidiScanNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTMidiScanNavigationController.m; sourceTree = "<group>"; };
 		23DCD64A1BF7EC36009A3BFA /* mididevicetest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mididevicetest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23DCD64E1BF7EC36009A3BFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		23DCD6501BF7EC36009A3BFA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -66,6 +72,10 @@
 				23DCD6511BF7EC36009A3BFA /* AppDelegate.m */,
 				23DCD6531BF7EC36009A3BFA /* ViewController.h */,
 				23DCD6541BF7EC36009A3BFA /* ViewController.m */,
+				231CA7E01C165F4300530EDA /* BTMidiScanViewController.h */,
+				231CA7E11C165F4300530EDA /* BTMidiScanViewController.m */,
+				235DCB3F1C1A95FC003E3439 /* BTMidiScanNavigationController.h */,
+				235DCB401C1A95FC003E3439 /* BTMidiScanNavigationController.m */,
 				23DCD6561BF7EC36009A3BFA /* Main.storyboard */,
 				23DCD6591BF7EC36009A3BFA /* Assets.xcassets */,
 				23DCD65B1BF7EC36009A3BFA /* LaunchScreen.storyboard */,
@@ -154,8 +164,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235DCB411C1A95FC003E3439 /* BTMidiScanNavigationController.m in Sources */,
 				23DCD6551BF7EC36009A3BFA /* ViewController.m in Sources */,
 				23DCD6521BF7EC36009A3BFA /* AppDelegate.m in Sources */,
+				231CA7E21C165F4300530EDA /* BTMidiScanViewController.m in Sources */,
 				23DCD64F1BF7EC36009A3BFA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,7 +286,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.naojitaniguchi.mididevicetest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb89441d-580d-4990-b7ae-4440507f68a3";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -288,7 +300,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.naojitaniguchi.mididevicetest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb89441d-580d-4990-b7ae-4440507f68a3";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
